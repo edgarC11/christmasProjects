@@ -1,4 +1,4 @@
-int ledPins[] = {9, 10, 11, 12, 13}; 
+int ledPins[] = {8, 9, 10, 11, 12}; 
 int numberOfLeds = 5;
 int soundsensor = 2;
 
