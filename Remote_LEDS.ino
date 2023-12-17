@@ -3,7 +3,7 @@
 const int RECV_PIN = 14;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
-int ledPins[] = {9, 10, 11, 12, 13};
+int ledPins[] = {8, 9, 10, 11, 12};
 const int numberOfLeds = 5;
 boolean isEnabled = true;
 
