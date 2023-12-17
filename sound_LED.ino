@@ -1,5 +1,5 @@
 const int buzzerPin = 7;
-const int ledPin = 13; // LED connected to digital pin 13
+const int ledPin = 12; // LED connected to digital pin 13
 const int sensor = 2; // Audio sensor connected to digital pin 2
 boolean is_on = false; //To determine/track if led is on or off
 
