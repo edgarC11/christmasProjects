@@ -1,13 +1,11 @@
-#include <IRremote.h>
 #include "pitches.h"
 const int buzzerPin = 7;
 int ledPins[] = {8, 9, 10, 11, 12}; // LED pins
 const int numberOfLeds = 5;
 const int sensor = 2; // Audio sensor pin
 boolean isEnabled = false; // To track if LED is on or off
-const int RECV_PIN = 14; // IR receiver pin
-IRrecv irrecv(RECV_PIN);
-decode_results results;
+
+
 
 int jingle_bells_melody[] = {
   NOTE_E5, NOTE_E5, NOTE_E5,
@@ -88,33 +86,15 @@ void setup() {
     pinMode(ledPins[i], OUTPUT);
   }
   randomSeed(analogRead(0)); // Initialize random seed
-  irrecv.enableIRIn(); // Start the IR receiver
 }
 
 
 void loop() {
-if (irrecv.decode(&results)) {
-    if (results.value == 0xFFA25D)  { // Example IR code to disable IR response
-     isEnabled = !isEnabled;
-    }  
-    if (isEnabled == 1) {
-      switch (results.value) {
-        case 0xFF30CF:
           sing(1);
           sing(1);
-          break;
-        case 0xFF18E7:
           sing(2);
-          break;
-        case 0xFF7A85:
           sing(3);
           sing(3);
-        default:
-          break;  
-      }
-    irrecv.resume(); // Receive the next value
-  }
-      }
     for (int i = 0; i < numberOfLeds; i++) {
     digitalWrite(ledPins[i], LOW);
   }
@@ -197,6 +177,7 @@ void sing(int s) {
     }
   }
 }
+
 void buzz(int targetPin, long frequency, long length) {
   digitalWrite(13, HIGH);
   long delayValue = 1000000 / frequency / 2; // calculate  the delay value between transitions
